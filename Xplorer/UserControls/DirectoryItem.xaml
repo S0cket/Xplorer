@@ -1,0 +1,42 @@
+﻿<UserControl x:Class="Xplorer.UserControls.DirectoryItem"
+			 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+			 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+			 xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+			 xmlns:local="clr-namespace:Xplorer.UserControls"
+			 mc:Ignorable="d" 
+			 d:DesignHeight="450" d:DesignWidth="800">
+
+	<UserControl.Resources>
+		<ResourceDictionary>
+			<ResourceDictionary.MergedDictionaries>
+				<ResourceDictionary Source="/Styles/WindowStyle.xaml"/>
+				<ResourceDictionary>
+					<Style x:Key="ItemStyle" TargetType="StackPanel">
+						<Setter Property="Background" Value="{StaticResource WindowBackground}"/>
+						<Style.Triggers>
+							<Trigger Property="IsMouseOver" Value="True">
+								<Setter Property="Background" Value="{StaticResource WindowChromeBackground}"/>
+							</Trigger>
+						</Style.Triggers>
+					</Style>
+				</ResourceDictionary>
+			</ResourceDictionary.MergedDictionaries>
+		</ResourceDictionary>
+	</UserControl.Resources>
+
+	<Grid>
+		<StackPanel x:Name="Root" Orientation="Horizontal" Style="{StaticResource ItemStyle}">
+			<Image Height="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Path=ActualHeight}"
+				   Width="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Path=ActualHeight}"
+				   Source="/Icons/Directory.png"/>
+			<TextBlock Name="DirName" HorizontalAlignment="Stretch" VerticalAlignment="Center"
+					   Foreground="Wheat"/>
+			<StackPanel.ContextMenu>
+				<ContextMenu Name="CtxMenu">
+					
+				</ContextMenu>
+			</StackPanel.ContextMenu>
+		</StackPanel>
+	</Grid>
+</UserControl>

@@ -1,0 +1,98 @@
+﻿<Window x:Class="Xplorer.PropertyWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Xplorer"
+        mc:Ignorable="d"
+        Title="PropertyWindow" Height="500" Width="400" WindowStyle="None">
+
+	<Window.Resources>
+		<ResourceDictionary>
+			<ResourceDictionary.MergedDictionaries>
+				<ResourceDictionary Source="/Styles/WindowStyle.xaml"/>
+			</ResourceDictionary.MergedDictionaries>
+		</ResourceDictionary>
+	</Window.Resources>
+	<Window.Style>
+		<Style TargetType="Window">
+			<Setter Property="SnapsToDevicePixels" Value="True"/>
+			<Setter Property="Background" Value="{StaticResource WindowBackground}"/>
+			<Setter Property="WindowChrome.WindowChrome">
+				<Setter.Value>
+					<WindowChrome CaptionHeight="30" ResizeBorderThickness="5" GlassFrameThickness="0" CornerRadius="0"/>
+				</Setter.Value>
+			</Setter>
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="Window">
+						<Border Background="Wheat">
+							<Border Background="{TemplateBinding Background}" Margin="1">
+							<Grid>
+								<Border Height="30" Background="{StaticResource WindowChromeBackground}" VerticalAlignment="Top">
+									<Grid>
+										<TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="{StaticResource TitleForeground}"
+												   Text="{TemplateBinding Title}" Margin="10,0,0,0"/>
+										<StackPanel HorizontalAlignment="Right" VerticalAlignment="Center" Orientation="Horizontal">
+											<Button Style="{StaticResource ChromeButton}" Width="40" Height="30" WindowChrome.IsHitTestVisibleInChrome="True"
+													Content="{DynamicResource WindowCloseIcon}" Click="WindowClose"/>
+										</StackPanel>
+									</Grid>
+								</Border>
+								<AdornerDecorator>
+									<ContentPresenter Margin="0,30,0,0"/>
+								</AdornerDecorator>
+							</Grid>
+						</Border>
+						</Border>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+	</Window.Style>
+	
+    <Grid>
+		<DockPanel>
+			<Grid DockPanel.Dock="Top" Margin="10">
+				<Grid.RowDefinitions>
+					<RowDefinition Height="1*"/>
+					<RowDefinition Height="1*"/>
+					<RowDefinition Height="1*"/>
+					<RowDefinition Height="1*"/>
+					<RowDefinition Height="1*"/>
+					<RowDefinition Height="1*"/>
+					<RowDefinition Height="1*"/>
+				</Grid.RowDefinitions>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="auto"/>
+					<ColumnDefinition Width="1*"/>
+				</Grid.ColumnDefinitions>
+				<TextBlock Grid.Row="0" Grid.Column="0" Foreground="Wheat" Text="Имя:" Margin="5"/>
+				<TextBox Grid.Row="0" Grid.Column="1" x:Name="ItemName"/>
+
+				<TextBlock Grid.Row="1" Grid.Column="0" Foreground="Wheat" Text="Тип:" Margin="5"/>
+				<TextBlock Grid.Row="1" Grid.Column="1" x:Name="ItemType" Foreground="Wheat" Text="test" Margin="5"/>
+
+				<TextBlock Grid.Row="2" Grid.Column="0" Foreground="Wheat" Text="Путь:" Margin="5"/>
+				<TextBlock Grid.Row="2" Grid.Column="1" x:Name="FullPath" Foreground="Wheat" Text="test" Margin="5"/>
+
+				<TextBlock Grid.Row="3" Grid.Column="0" Foreground="Wheat" Text="Размер:" Margin="5"/>
+				<TextBlock Grid.Row="3" Grid.Column="1" x:Name="ItemSize" Foreground="Wheat" Text="0 Б" Margin="5"/>
+
+				<TextBlock Grid.Row="4" Grid.Column="0" Foreground="Wheat" Text="Время создания:" Margin="5"/>
+				<TextBlock Grid.Row="4" Grid.Column="1" x:Name="CreationTime" Foreground="Wheat" Text="test" Margin="5"/>
+
+				<TextBlock Grid.Row="5" Grid.Column="0" Foreground="Wheat" Text="Время доступа:" Margin="5"/>
+				<TextBlock Grid.Row="5" Grid.Column="1" x:Name="LastAccessTime" Foreground="Wheat" Text="test" Margin="5"/>
+
+				<TextBlock Grid.Row="6" Grid.Column="0" Foreground="Wheat" Text="Время изменения:" Margin="5"/>
+				<TextBlock Grid.Row="6" Grid.Column="1" x:Name="LastWriteTime" Foreground="Wheat" Text="test" Margin="5"/>
+			</Grid>
+			<StackPanel DockPanel.Dock="Bottom" HorizontalAlignment="Center" Orientation="Horizontal" Margin="10">
+				<Button Style="{StaticResource ChromeButton}" Width="100" Height="30" Margin="5" Foreground="Wheat" Content="ОК" Click="Confirm"/>
+				<Button Style="{StaticResource ChromeButton}" Width="100" Height="30" Margin="5" Foreground="Wheat" Content="Отмена" Click="WindowClose"/>
+			</StackPanel>
+			<Label/>
+		</DockPanel>
+    </Grid>
+</Window>

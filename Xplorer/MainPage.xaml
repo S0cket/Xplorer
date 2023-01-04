@@ -1,0 +1,56 @@
+﻿<UserControl x:Class="Xplorer.MainPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Xplorer"
+			 xmlns:ctrls="clr-namespace:Xplorer.UserControls"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="450" MinWidth="450" MinHeight="300">
+	
+	<UserControl.Resources>
+		<ResourceDictionary>
+			<ResourceDictionary.MergedDictionaries>
+				<ResourceDictionary Source="/Styles/WindowStyle.xaml"/>
+				<ResourceDictionary>
+					<Image x:Key="BackIcon" Source="/Icons/ArrowLeft.png"/>
+					<Image x:Key="ForwardIcon" Source="/Icons/ArrowRight.png"/>
+					<Image x:Key="ReturnIcon" Source="/Icons/ArrowUp.png"/>
+					<Image x:Key="HomeIcon" Source="/Icons/Home.png"/>
+					<Image x:Key="RefreshIcon" Source="/Icons/Refresh.png" Margin="2"/>
+				</ResourceDictionary>
+			</ResourceDictionary.MergedDictionaries>
+		</ResourceDictionary>
+	</UserControl.Resources>
+
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="30"/>
+			<RowDefinition/>
+		</Grid.RowDefinitions>
+		<StackPanel Grid.Row="0" Orientation="Horizontal" Background="{StaticResource WindowChromeBackground}">
+			<Button x:Name="ButtonBack" Style="{StaticResource ChromeButton}" Width="30" Height="23"
+					Content="{DynamicResource BackIcon}" Click="Back" IsEnabled="False"/>
+			<Button x:Name="ButtonForward" Style="{StaticResource ChromeButton}" Width="30" Height="23"
+					Content="{DynamicResource ForwardIcon}" Click="Forward" IsEnabled="False"/>
+			<Button x:Name="ButtonReturn" Style="{StaticResource ChromeButton}" Width="30" Height="23"
+					Content="{DynamicResource ReturnIcon}" Click="Return" IsEnabled="False"/>
+			<Button x:Name="ButtonHome" Style="{StaticResource ChromeButton}" Width="30" Height="23"
+					Content="{DynamicResource HomeIcon}" Click="Home"/>
+			<Button x:Name="ButtonRefresh" Style="{StaticResource ChromeButton}" Width="30" Height="23"
+					Content="{DynamicResource RefreshIcon}" Click="Refresh"/>
+		</StackPanel>
+		<ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+			<StackPanel Orientation="Vertical">
+				<StackPanel x:Name="Items" Orientation="Vertical"/>
+				<Label x:Name="Space" Height="50" AllowDrop="True" Drop="OnDrop">
+					<Label.ContextMenu>
+						<ContextMenu>
+							
+						</ContextMenu>
+					</Label.ContextMenu>
+				</Label>
+			</StackPanel>
+		</ScrollViewer>
+	</Grid>
+</UserControl>

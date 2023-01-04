@@ -1,0 +1,40 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+	<SolidColorBrush x:Key="WindowBackground" Color="#152129"/>
+	<SolidColorBrush x:Key="WindowChromeBackground" Color="#07131b"/>
+	<SolidColorBrush x:Key="WindowItemSelect" Color="#355368"/>
+	<SolidColorBrush x:Key="TitleForeground" Color="#ffffff"/>
+
+	<Image x:Key="WindowMinimizeIcon" Source="/Icons/Minimize.png"/>
+	<Image x:Key="WindowMaximizeIcon" Source="/Icons/SizeUp.png" Margin="5"/>
+	<Image x:Key="WindowCloseIcon" Source="/Icons/Close.png"/>
+
+	<Style x:Key="ChromeButton" TargetType="Button">
+		<Setter Property="SnapsToDevicePixels" Value="True"/>
+		<Setter Property="Background" Value="{StaticResource WindowChromeBackground}"/>
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="Button">
+					<Border Background="{TemplateBinding Background}">
+						<ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+					</Border>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+		<Style.Triggers>
+			<Trigger Property="IsMouseOver" Value="True">
+				<Setter Property="Background" Value="{StaticResource WindowBackground}"/>
+			</Trigger>
+		</Style.Triggers>
+	</Style>
+
+	<Style x:Key="ItemStyle">
+		<Setter Property="ItemsControl.Height" Value="50"/>
+		<Setter Property="ItemsControl.Background" Value="White"/>
+	</Style>
+
+	<SolidColorBrush x:Key="FillProgress" Color="#396f2b"/>
+	<SolidColorBrush x:Key="BackgroundProgress" Color="#878787"/>
+
+</ResourceDictionary>
